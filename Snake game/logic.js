@@ -1,5 +1,5 @@
 // Game Constants & variables
-const inputDir = {x:0, y:0};
+let inputDir = {x:0, y:0};
 const foodSound = new Audio('Food.mp3');
 const moveSound = new Audio('move.mp3');
 const gameOverSound = new Audio('GameOver.mp3');
@@ -8,13 +8,15 @@ let speed = 4;
 let score = 0;
 let lastPaintTime = 0;
 let snakeArr = [
-    {x:13, y:15}
+    {x:13, y:15}  
 ]
-food= {x: 6, y: 7};
+food = {x: 6, y: 7};
 //Game Function
 function main(ctime){
     window.requestAnimationFrame(main);
+
     // console.log(ctime)
+
     if((ctime - lastPaintTime)/1000 < 1/speed){
         return;
     }
@@ -22,19 +24,28 @@ function main(ctime){
     gameEngine();
 }
 
-function isCollide(sarr){
-    return false;
+function isCollide(snake){
+    // if you bump into yourself
+    for (let i =1; i< snakeArr.length; i++){
+        if(snake[i].x === snake[0].x && snake[i].y === snake[0].y){
+            return true;
+        }
+    }
+    // if you bump into the wall
+    if(snake[0].x >= 18 || snake[0].x <=0  && snake[0].y >= 18 || snake[0] .x <= y){
+        return true;
+    }
 }
 
 function gameEngine(){
     //Part 1: Updating the snake array and food
       if(isCollide(snakeArr)){
         gameOverSound.play();
-        inputDir = {x: 0, y: 0 };
+        inputDir = {x: 0, y: 0};
         alert("Game over. Press any key to play again!");
-        snakeArr = [{x: 13, Y: 15}];
+        snakeArr = [{x: 13, y: 15}];
         score = 0;
-      }
+      } 
 
       //If you have eaten the food ,increament  the score and regenarate the food
       if(snakeArr[0].y === food.y && snakeArr[0].x ===food.x){
@@ -47,7 +58,7 @@ function gameEngine(){
 
       // Moving the snake
       for (let i = snakeArr.length - 2; i>=0; i--){
-        // const element = array[i];
+    
         snakeArr[i+1] = {...snakeArr[i]};
       }
        
@@ -89,7 +100,7 @@ function gameEngine(){
 //main logic start here 
 window.requestAnimationFrame(main);
 window.addEventListener('keydown', e=>{
-    inputDir = {x: 0, y: 0}   //Start the game
+    inputDir = {x: 0, y: 1}   //Start the game
     moveSound.play();
     switch (e.key){
         case "ArrowUp":
