@@ -120,6 +120,7 @@ window.addEventListener('keydown', e=>{
                 inputDir.x = -1;
                 inputDir.y = 0;
                 break;
+                
             case "ArrowRight":
                 console.log("ArrowRight")
                 inputDir.x = 1;
