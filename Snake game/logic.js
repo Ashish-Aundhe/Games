@@ -32,7 +32,7 @@ function isCollide(snake){
         }
     }
     // if you bump into the wall
-    if(snake[0].x >= 18 || snake[0].x <=0  && snake[0].y >= 18 || snake[0] .x <= y){
+    if(snake[0].x >= 18 || snake[0].x <=0  && snake[0].y >= 18 || snake[0].x <= y){
         return true;
     }
 }
@@ -58,7 +58,7 @@ function gameEngine(){
 
       // Moving the snake
       for (let i = snakeArr.length - 2; i>=0; i--){
-    
+        // const element = array[i];
         snakeArr[i+1] = {...snakeArr[i]};
       }
        
