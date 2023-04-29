@@ -26,13 +26,13 @@ function main(ctime){
 
 function isCollide(snake){
     // if you bump into yourself
-    for (let i =1; i< snakeArr.length; i++){
+    for (let i = 1; i< snakeArr.length; i++){
         if(snake[i].x === snake[0].x && snake[i].y === snake[0].y){
             return true;
         }
     }
     // if you bump into the wall
-    if(snake[0].x >= 18 || snake[0].x <=0  && snake[0].y >= 18 || snake[0].x <= y){
+    if(snake[0].x >= 18 || snake[0].x <=0  && snake[0].y >= 18 || snake[0].y <= 0){
         return true;
     }
 }
@@ -58,7 +58,7 @@ function gameEngine(){
 
       // Moving the snake
       for (let i = snakeArr.length - 2; i>=0; i--){
-        // const element = array[i];
+        // const element  = array[i];
         snakeArr[i+1] = {...snakeArr[i]};
       }
        
@@ -88,7 +88,6 @@ function gameEngine(){
     foodElement.style.gridColumnStart = food.x;
         snakeElement.classList.add('food')
         board.appendChild(foodElement);
-   
 }
 
 
@@ -106,13 +105,13 @@ window.addEventListener('keydown', e=>{
         case "ArrowUp":
             console.log("ArrowUp")
             inputDir.x = 0;
-            inputDir.y = -1;
+            inputDir.y = -1;    
             break;
 
             case "ArrowDown":
                 console.log("ArrowDown")
                 inputDir.x = 0;
-                inputDir.y = 1 ;
+                inputDir.y = 1;
                 break;
 
             case "ArrowLeft":
